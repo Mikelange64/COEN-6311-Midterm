@@ -28,45 +28,206 @@
             justify-content: space-between;
         }
 
+        /* Top Navigation Styles */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        /* Left side: logo and name */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-shield svg {
+            width: 60px;   /* increased from default ~30px */
+            height: 70px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .app-title {
+            font-size: 1.2rem;
+            color: #c69c6d;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        /* Right side: nav links, search bar, auth buttons */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem; /* increased spacing */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-right: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover {
+            color: #c69c6d;
+        }
+
+        /* Search Bar Styles */
+        .search-container {
+            position: relative;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 0.3rem 0.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-left: 1rem; /* add gap between search bar and nav links */
+        }
+
+        .search-input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            width: 250px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-button {
+            background: #c69c6d;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #b38a5c;
+        }
+
+        .search-button svg {
+            color: white;
+        }
+
+        /* Auth Buttons */
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .auth-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .auth-link.signup {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .auth-link:hover {
+            color: #c69c6d;
+        }
+
+        .auth-link.signup:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+
         .logo-section {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
 
-        .logo-container {
-            background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
+        /* Full-height Logo Section */
+        .logo-fullheight {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: 100%; /* Fill the full nav height */
+            margin-right: 3rem; /* Space between logo and nav options */
         }
 
-        .logo-shield {
-            width: 40px;
-            height: 40px;
-            position: relative;
+        .logo-image {
+            height: 50px; /* Adjust based on your nav height */
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
         }
 
-        .logo-shield svg {
-            width: 100%;
+        /* Fallback logo when image fails */
+        .logo-fallback {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             height: 100%;
         }
 
+        .logo-shield svg {
+            width: 50px;
+            height: 60px;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
         .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #912338;
-            letter-spacing: -0.5px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+            line-height: 1;
         }
 
         .app-title {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-size: 1rem;
+            color: #c69c6d;
+            font-weight: 500;
+            line-height: 1;
+            margin: 0;
         }
 
         .container {
@@ -268,25 +429,57 @@
 </head>
 <body>
     <header class="header">
-        <div class="logo-section">
-            <div class="logo-container">
+        <nav class="top-nav">
+            <!-- LEFT SIDE: Logo that fills full height -->
+            <div class="logo-fullheight">
                 <img src="{% static 'book_listings/images/Concordia-logo.jpeg' %}"
                      alt="Concordia University"
-                     style="height: 40px; width: auto; max-width: 200px;"
-                     onerror="this.style.display='none'; this.parentElement.querySelector('.logo-shield').style.display='flex'; this.parentElement.querySelector('.logo-text').style.display='block';">
-                <div class="logo-shield" style="display: none;">
-                    <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 5 L90 25 L90 70 L50 115 L10 70 L10 25 Z"
-                              fill="#912338" stroke="#912338" stroke-width="2"/>
-                        <rect x="45" y="35" width="10" height="50" fill="#c69c6d"/>
-                        <path d="M35 35 L50 25 L65 35" fill="none" stroke="#c69c6d" stroke-width="3"/>
-                        <path d="M40 50 L50 45 L60 50" fill="none" stroke="white" stroke-width="2"/>
-                    </svg>
+                     class="logo-image"
+                     onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='flex';">
+                <div class="logo-fallback" style="display: none;">
+                    <div class="logo-shield">
+                        <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 5 L90 25 L90 70 L50 115 L10 70 L10 25 Z"
+                                  fill="#912338" stroke="#912338" stroke-width="2"/>
+                            <rect x="45" y="35" width="10" height="50" fill="#c69c6d"/>
+                            <path d="M35 35 L50 25 L65 35" fill="none" stroke="#c69c6d" stroke-width="3"/>
+                            <path d="M40 50 L50 45 L60 50" fill="none" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text-container">
+                        <span class="logo-text">Concordia</span>
+                        <h1 class="app-title">ConcordiaBook</h1>
+                    </div>
                 </div>
-                <span class="logo-text" style="display: none;">Concordia</span>
             </div>
-            <h1 class="app-title">ConcordiaBook</h1>
-        </div>
+
+            <!-- RIGHT SIDE: Navigation, Search, Auth -->
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/courses/" class="nav-link">Browse Courses</a>
+                    <a href="/my-books/" class="nav-link">My Textbooks</a>
+                    <a href="/how-it-works/" class="nav-link">How It Works</a>
+                </div>
+
+                <div class="search-container">
+                    <form action="/search/" method="get" class="search-form">
+                        <input type="text" name="q" placeholder="Search courses, textbooks..." class="search-input">
+                        <button type="submit" class="search-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="auth-buttons">
+                    <a href="/login/" class="auth-link">Login</a>
+                    <a href="/register/" class="auth-link signup">Sign Up</a>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <div class="container">
